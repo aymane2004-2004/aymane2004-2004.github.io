@@ -18,6 +18,19 @@
       background: #0b0f17;
       color: #eef2ff;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Custom scrollbar - Green */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #11161f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border-radius: 8px;
     }
 
     .container {
@@ -26,7 +39,7 @@
       padding: 0 2rem;
     }
 
-    /* Navigation */
+    /* Navigation with Green Theme */
     nav {
       display: flex;
       justify-content: space-between;
@@ -34,18 +47,19 @@
       padding: 1.2rem 0;
       flex-wrap: wrap;
       gap: 1rem;
-      border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+      animation: slideDown 0.6s ease-out;
     }
     .logo {
       font-size: 1.6rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #00bcd4, #2979ff);
+      background: linear-gradient(135deg, #10b981, #059669);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
     .logo i {
-      color: #29b6f6;
+      color: #10b981;
       margin-right: 6px;
     }
     .nav-links {
@@ -57,15 +71,30 @@
       text-decoration: none;
       color: #b9c7d9;
       font-weight: 500;
-      transition: 0.2s;
+      transition: 0.3s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #10b981;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
     }
     .nav-links a:hover {
-      color: #29b6f6;
+      color: #10b981;
     }
 
-    /* Case Study Header */
+    /* Case Study Header with Animations */
     .case-header {
       padding: 3rem 0 2rem;
+      animation: fadeInUp 0.8s ease-out;
     }
     .breadcrumb {
       color: #6c86a8;
@@ -73,13 +102,18 @@
       margin-bottom: 1rem;
     }
     .breadcrumb a {
-      color: #29b6f6;
+      color: #10b981;
       text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover {
+      color: #34d399;
     }
     h1 {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      animation: glowText 2s ease-in-out infinite;
     }
     .case-meta {
       display: flex;
@@ -96,9 +130,14 @@
       gap: 8px;
       color: #8f9bb3;
       font-size: 0.85rem;
+      transition: transform 0.3s ease;
+    }
+    .meta-item:hover {
+      transform: translateX(5px);
+      color: #10b981;
     }
     .meta-item i {
-      color: #29b6f6;
+      color: #10b981;
     }
 
     /* Content Sections */
@@ -111,7 +150,20 @@
     .main-content h2 {
       font-size: 1.5rem;
       margin: 1.5rem 0 1rem;
-      color: #29b6f6;
+      color: #10b981;
+      position: relative;
+      display: inline-block;
+      animation: fadeInRight 0.6s ease-out;
+    }
+    .main-content h2:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40%;
+      height: 2px;
+      background: linear-gradient(90deg, #10b981, transparent);
+      border-radius: 2px;
     }
     .main-content h2:first-of-type {
       margin-top: 0;
@@ -119,6 +171,7 @@
     .main-content p {
       color: #cbd5e6;
       margin-bottom: 1rem;
+      animation: fadeInLeft 0.6s ease-out;
     }
     .code-block {
       background: #0a0c10;
@@ -129,16 +182,35 @@
       font-family: 'Courier New', monospace;
       font-size: 0.85rem;
       overflow-x: auto;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .code-block:hover {
+      border-color: #10b981;
+      transform: scale(1.01);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.1);
+    }
+    .code-block pre {
+      margin: 0;
+      color: #8db3e2;
     }
     .attack-steps {
       background: #0f172a;
-      border-left: 3px solid #f97316;
+      border-left: 3px solid #10b981;
       padding: 1rem 1.5rem;
       margin: 1rem 0;
       border-radius: 8px;
+      transition: all 0.3s ease;
+      animation: slideInLeft 0.6s ease-out backwards;
+      animation-delay: calc(var(--step-i, 0) * 0.1s);
+    }
+    .attack-steps:hover {
+      transform: translateX(8px);
+      background: #131e2c;
+      border-left-color: #34d399;
     }
     .attack-steps h4 {
-      color: #f97316;
+      color: #10b981;
       margin-bottom: 0.5rem;
     }
     .findings-grid {
@@ -152,6 +224,14 @@
       padding: 1rem;
       border-radius: 12px;
       border: 1px solid #1e2a3a;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInScale 0.5s ease-out backwards;
+      animation-delay: calc(var(--card-i, 0) * 0.1s);
+    }
+    .finding-card:hover {
+      transform: translateY(-5px);
+      border-color: #10b981;
+      box-shadow: 0 10px 20px -8px rgba(16, 185, 129, 0.2);
     }
     .finding-card .severity {
       display: inline-block;
@@ -175,11 +255,19 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       border: 1px solid #1e2a3a;
+      transition: all 0.3s ease;
+      animation: fadeInRight 0.6s ease-out backwards;
+      animation-delay: calc(var(--info-i, 0) * 0.1s);
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      border-color: #10b981;
+      box-shadow: 0 10px 20px -8px rgba(16, 185, 129, 0.15);
     }
     .info-card h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
-      color: #29b6f6;
+      color: #10b981;
     }
     .info-card ul {
       list-style: none;
@@ -189,21 +277,42 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      transition: transform 0.2s ease;
+    }
+    .info-card li:hover {
+      transform: translateX(5px);
+      color: #10b981;
     }
     .btn-back {
       display: inline-block;
-      background: #1e88e5;
+      background: #10b981;
       color: white;
       padding: 0.7rem 1.5rem;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
       margin-top: 1rem;
-      transition: 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-back:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-back:hover:before {
+      left: 100%;
     }
     .btn-back:hover {
-      background: #0b5e9e;
+      background: #059669;
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
     }
     footer {
       text-align: center;
@@ -211,18 +320,132 @@
       color: #6c7a91;
       font-size: 0.75rem;
       border-top: 1px solid #11161f;
+      animation: fadeInUp 0.6s ease-out;
     }
+
+    /* Animations */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes glowText {
+      0%, 100% {
+        text-shadow: 0 0 0px rgba(16, 185, 129, 0);
+      }
+      50% {
+        text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    /* Floating background decoration */
+    .bg-decoration {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.03;
+      font-size: 8rem;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1.2rem;
+      }
       .case-content {
         grid-template-columns: 1fr;
       }
       .findings-grid {
         grid-template-columns: 1fr;
       }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .bg-decoration {
+        font-size: 4rem;
+        bottom: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
 <body>
+<div class="bg-decoration">
+  <i class="fas fa-shield-haltered"></i>
+</div>
 <div class="container">
   <nav>
     <div class="logo"><i class="fas fa-shield-haltered"></i> AYMANE.CHAOQUI</div>
@@ -254,7 +477,7 @@
       
       <h2>🏗️ Lab Architecture</h2>
       <div class="code-block">
-        <pre style="margin:0; color:#8db3e2;">
+        <pre style="margin:0;">
 ┌─────────────────┐     ┌─────────────────┐
 │   Kali Linux    │────▶│  DC01 (Windows  │
 │   (Attacker)    │     │   Server 2019)  │
@@ -273,22 +496,22 @@
       <h2>🔍 Vulnerability Assessment</h2>
       <p>Initial reconnaissance using Nmap and BloodHound revealed several critical misconfigurations:</p>
       <div class="findings-grid">
-        <div class="finding-card">
+        <div class="finding-card" style="--card-i:1">
           <span class="severity critical">CRITICAL</span>
           <h4>Weak Kerberos encryption</h4>
           <p>RC4_HMAC_MD5 enabled, vulnerable to Kerberoasting attacks.</p>
         </div>
-        <div class="finding-card">
+        <div class="finding-card" style="--card-i:2">
           <span class="severity high">HIGH</span>
           <h4>Unconstrained Delegation</h4>
           <p>Multiple service accounts with unconstrained delegation enabled.</p>
         </div>
-        <div class="finding-card">
+        <div class="finding-card" style="--card-i:3">
           <span class="severity high">HIGH</span>
           <h4>Pass-the-Hash vulnerable</h4>
           <p>NTLM hashes accessible via LSASS memory.</p>
         </div>
-        <div class="finding-card">
+        <div class="finding-card" style="--card-i:4">
           <span class="severity medium">MEDIUM</span>
           <h4>AS-REP Roasting</h4>
           <p>Kerberos pre-authentication disabled for some accounts.</p>
@@ -297,7 +520,7 @@
 
       <h2>⚡ Exploitation Walkthrough</h2>
       
-      <div class="attack-steps">
+      <div class="attack-steps" style="--step-i:1">
         <h4>Step 1: Initial Reconnaissance</h4>
         <div class="code-block">
           <pre style="margin:0;">nmap -sV -sC -p- 192.168.1.10
@@ -305,7 +528,7 @@ bloodhound-python -d domain.local -u username -p password -ns 192.168.1.10</pre>
         </div>
       </div>
 
-      <div class="attack-steps">
+      <div class="attack-steps" style="--step-i:2">
         <h4>Step 2: Kerberoasting Attack</h4>
         <p>Extracted service account hashes from the domain controller and cracked them offline.</p>
         <div class="code-block">
@@ -314,7 +537,7 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt</pre>
         </div>
       </div>
 
-      <div class="attack-steps">
+      <div class="attack-steps" style="--step-i:3">
         <h4>Step 3: Pass-the-Hash & Lateral Movement</h4>
         <p>Using cracked NTLM hash to move laterally to domain controller.</p>
         <div class="code-block">
@@ -322,7 +545,7 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt</pre>
         </div>
       </div>
 
-      <div class="attack-steps">
+      <div class="attack-steps" style="--step-i:4">
         <h4>Step 4: Privilege Escalation - DCSync Attack</h4>
         <p>Simulated a DCSync attack to extract all domain password hashes.</p>
         <div class="code-block">
@@ -354,7 +577,7 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt</pre>
     </div>
 
     <div class="sidebar">
-      <div class="info-card">
+      <div class="info-card" style="--info-i:1">
         <h3><i class="fas fa-download"></i> Resources</h3>
         <ul>
           <li><i class="fab fa-github"></i> Lab setup script</li>
@@ -362,7 +585,7 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt</pre>
           <li><i class="fas fa-video"></i> Video walkthrough</li>
         </ul>
       </div>
-      <div class="info-card">
+      <div class="info-card" style="--info-i:2">
         <h3><i class="fas fa-tools"></i> Tools Used</h3>
         <ul>
           <li><i class="fas fa-terminal"></i> Nmap / Rustscan</li>
@@ -372,7 +595,7 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt</pre>
           <li><i class="fas fa-chart-line"></i> Hashcat / John</li>
         </ul>
       </div>
-      <div class="info-card">
+      <div class="info-card" style="--info-i:3">
         <h3><i class="fas fa-shield-alt"></i> Mitre ATT&CK</h3>
         <ul>
           <li>T1558.003 - Kerberoasting</li>
@@ -388,5 +611,33 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt</pre>
 <footer>
   <p>© 2025 Aymane Chaouqi — Offensive & Defensive Security. This case study is for educational purposes only.</p>
 </footer>
+
+<script>
+  // Add intersection observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all sections for fade-in effect
+  document.querySelectorAll('.main-content h2, .main-content p, .code-block, .attack-steps, .finding-card, .info-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Console greeting
+  console.log("%c🛡️ AD Pentest Lab Case Study | Green Theme Animated", "color:#10b981; font-weight:bold;");
+</script>
 </body>
 </html>
