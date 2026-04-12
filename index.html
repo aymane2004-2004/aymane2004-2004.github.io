@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Aymane Chaouqi | Cybersecurity Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0f17;
+      color: #eef2ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #11161f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f6392;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00bcd4, #2979ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .logo i {
+      background: none;
+      -webkit-background-clip: unset;
+      color: #29b6f6;
+      margin-right: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #b9c7d9;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #29b6f6;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 4rem 0 3rem;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-badge {
+      background: rgba(41,182,246,0.12);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #4fc3f7;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 span {
+      color: #29b6f6;
+      border-bottom: 2px solid #29b6f6;
+    }
+    .hero p {
+      color: #9aa9c1;
+      font-size: 1rem;
+      max-width: 550px;
+      margin: 1rem 0 1.5rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .btn-primary {
+      background: #1e88e5;
+      color: white;
+      box-shadow: 0 4px 12px rgba(30,136,229,0.3);
+    }
+    .btn-primary:hover {
+      background: #0b5e9e;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border: 1.5px solid #2c3e55;
+      background: transparent;
+      color: #cfddee;
+    }
+    .btn-outline:hover {
+      border-color: #29b6f6;
+      color: #29b6f6;
+      background: rgba(41,182,246,0.05);
+    }
+    .hero-stats {
+      flex: 0.9;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid #1f2a3e;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #29b6f6;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: #8f9bb3;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid #11161f;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 55%;
+      height: 3px;
+      background: linear-gradient(90deg, #29b6f6, #1e88e5);
+      border-radius: 4px;
+    }
+
+    /* skills grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .skill-tag {
+      background: #0f172a;
+      border: 1px solid #1e2a3a;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .skill-tag i {
+      margin-right: 6px;
+      color: #29b6f6;
+    }
+    .skill-tag:hover {
+      border-color: #29b6f6;
+      background: #1a2538;
+    }
+
+    /* projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background: #0f172a;
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      transition: 0.25s ease;
+      border: 1px solid #1e2a3a;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #2c6280;
+      box-shadow: 0 15px 25px -12px rgba(0,0,0,0.5);
+    }
+    .project-icon {
+      font-size: 1.8rem;
+      background: #131e2c;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      color: #29b6f6;
+    }
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      color: #9aa9c1;
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.8rem 0;
+    }
+    .project-tags span {
+      background: #0b0f17;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #8db3e2;
+    }
+    .card-link {
+      text-decoration: none;
+      color: #4fc3f7;
+      font-weight: 500;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .card-link i {
+      transition: transform 0.2s;
+    }
+    .card-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* experience / timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .timeline-item {
+      background: #0f172a;
+      border-left: 3px solid #29b6f6;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+    }
+    .timeline-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-date {
+      color: #6c86a8;
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* contact + form */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: space-between;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info p {
+      margin: 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #cbd5e6;
+      font-size: 0.9rem;
+    }
+    .contact-form {
+      flex: 1;
+      background: #0f172a;
+      padding: 1.8rem;
+      border-radius: 1.5rem;
+      border: 1px solid #1f2a3e;
+    }
+    .input-group {
+      margin-bottom: 1rem;
+    }
+    input, textarea {
+      width: 100%;
+      background: #080c12;
+      border: 1px solid #1f2e42;
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      color: #eef2ff;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #29b6f6;
+      box-shadow: 0 0 0 2px rgba(41,182,246,0.2);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #6c7a91;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        padding: 0 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <div class="logo">
+      <i class="fas fa-shield-haltered"></i> AYMANE.CHAOQUI
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-bug"></i> Offensive Security & SOC Analyst</div>
+        <h1>Aymane <span>Chaouqi</span><br>Cybersecurity Engineer Student</h1>
+        <p>Specialized in pentesting, Active Directory attacks, and Blue Team operations. Passionate about threat detection, SIEM (Splunk), and vulnerability assessment.</p>
+        <div class="btn-group">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact me</a>
+          <a href="#projects" class="btn btn-outline"><i class="fas fa-terminal"></i> Explore labs</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-number">+15</div><div class="stat-label">Labs & CTFs</div></div>
+        <div class="stat-item"><div class="stat-number">AD</div><div class="stat-label">Active Directory</div></div>
+        <div class="stat-item"><div class="stat-number">SIEM</div><div class="stat-label">Splunk Expert</div></div>
+        <div class="stat-item"><div class="stat-number">C++/Py</div><div class="stat-label">Detection tools</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills section (technical arsenal) -->
+  <section id="skills">
+    <h2 class="section-title"><i class="fas fa-microchip"></i> Technical Arsenal</h2>
+    <div class="skills-grid">
+      <div class="skill-tag"><i class="fas fa-skull"></i> Pentesting</div>
+      <div class="skill-tag"><i class="fas fa-network-wired"></i> Active Directory Attacks</div>
+      <div class="skill-tag"><i class="fas fa-chart-line"></i> Splunk SIEM</div>
+      <div class="skill-tag"><i class="fas fa-shield-virus"></i> Threat Detection</div>
+      <div class="skill-tag"><i class="fab fa-python"></i> Python / Bash</div>
+      <div class="skill-tag"><i class="fas fa-code"></i> C++ / PowerShell</div>
+      <div class="skill-tag"><i class="fas fa-search"></i> Nmap / Metasploit</div>
+      <div class="skill-tag"><i class="fas fa-laptop-code"></i> Burp Suite / Wireshark</div>
+      <div class="skill-tag"><i class="fas fa-database"></i> Log Analysis & Correlation</div>
+    </div>
+  </section>
+
+  <!-- Projects section (based on CV) -->
+  <section id="projects">
+    <h2 class="section-title"><i class="fas fa-folder-open"></i> Security Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-server"></i></div>
+        <h3>Active Directory Pentest Lab</h3>
+        <p>Vulnerable AD environment setup with Windows Server & Kali. Performed Kerberoasting, Pass-the-Hash, privilege escalation & comprehensive vulnerability assessment.</p>
+        <div class="project-tags"><span>AD</span><span>Kerberoasting</span><span>Mimikatz</span></div>
+        <a href="#" class="card-link">Case study <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <div class="project-icon"><i class="fab fa-whatsapp"></i></div>
+        <h3>WhatsApp Suspicious Analyzer (C++)</h3>
+        <p>Offline chat forensic tool that scans for keywords (bomb, drug, etc.), malicious links, and suspicious media files. Generates detailed threat reports.</p>
+        <div class="project-tags"><span>C++</span><span>Threat Detection</span><span>Forensics</span></div>
+        <a href="#" class="card-link">GitHub <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-chart-simple"></i></div>
+        <h3>Home Lab SOC Stack (Splunk + Kali)</h3>
+        <p>Deployed Splunk SIEM, ingested logs from Linux & Windows endpoints, created correlation rules & real-time alerting for attack simulation (brute-force, malware).</p>
+        <div class="project-tags"><span>Splunk</span><span>Security Monitoring</span><span>EDR</span></div>
+        <a href="#" class="card-link">Live demo <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Formation -->
+  <section id="experience">
+    <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience & Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Cybersecurity Intern – Threat Detection & Analysis</h3>
+        <div class="timeline-date"><i class="far fa-calendar-alt"></i> Akelik, Casablanca | 2024</div>
+        <p>Developed an offline WhatsApp analyzer (C++) to detect suspicious content (text keywords, links, videos/audios). Implemented threat detection logic and reporting.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Engineering Degree in Computer Science (Cybersecurity Specialization)</h3>
+        <div class="timeline-date"><i class="fas fa-graduation-cap"></i> Académie Internationale Mohammed VI de l’Aviation Civile | 2023 – present</div>
+        <p>Focus on offensive security, SOC operations, network security, and advanced penetration testing.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Preparatory Classes – Maths-Physics (MP)</h3>
+        <div class="timeline-date"><i class="fas fa-chalkboard"></i> Centre Reda Slaoui | 2021 – 2023</div>
+        <p>Intensive mathematics & physics foundation, analytical problem-solving.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Certifications & Languages</h3>
+        <div class="timeline-date"><i class="fas fa-certificate"></i> English (Fluent), French (Fluent), Arabic (Native) · Ongoing OSCP prep</div>
+        <p>Active Directory Attacks · SIEM Fundamentals · Python for Pentesters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title"><i class="fas fa-paper-plane"></i> Contact & PGP</h2>
+    <div class="contact-flex">
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> chaouqi.aymane23@gmail.com</p>
+        <p><i class="fab fa-github"></i> github.com/aymane-chaouqi</p>
+        <p><i class="fab fa-linkedin"></i> linkedin.com/in/aymane-chaouqi</p>
+        <p><i class="fas fa-phone-alt"></i> +212 708 311 489</p>
+        <div style="margin-top: 1.5rem; background: #0f172a; padding: 1rem; border-radius: 1rem;">
+          <i class="fas fa-lock"></i> <strong>PGP/GPG available</strong><br>
+          <span style="font-size: 0.75rem;">Encrypted communication preferred for sensitive inquiries.</span>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="input-group">
+            <input type="text" id="name" placeholder="Full name" required>
+          </div>
+          <div class="input-group">
+            <input type="email" id="email" placeholder="Email address" required>
+          </div>
+          <div class="input-group">
+            <textarea rows="4" id="message" placeholder="Your message (encryption not mandatory but appreciated)" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%"><i class="fas fa-paper-plane"></i> Send secure message</button>
+          <div id="formFeedback" style="margin-top: 1rem; font-size: 0.8rem; text-align: center;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+<footer>
+  <p>© 2025 Aymane Chaouqi — Offensive & Defensive Security. All labs and tools are for ethical purposes.</p>
+</footer>
+
+<script>
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveNav() {
+    let current = '';
+    const scrollPos = window.scrollY + 110;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (href === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+
+  // smooth scroll nav
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Contact form handler
+  const contactForm = document.getElementById('contactForm');
+  const feedbackDiv = document.getElementById('formFeedback');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      feedbackDiv.innerHTML = '<span style="color:#f97316;"><i class="fas fa-exclamation-triangle"></i> All fields required.</span>';
+      setTimeout(() => feedbackDiv.innerHTML = '', 2500);
+      return;
+    }
+    if (!email.includes('@')) {
+      feedbackDiv.innerHTML = '<span style="color:#f97316;">Valid email needed.</span>';
+      setTimeout(() => feedbackDiv.innerHTML = '', 2500);
+      return;
+    }
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending securely...';
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+      feedbackDiv.innerHTML = '<span style="color:#34d399;"><i class="fas fa-check-circle"></i> Message delivered (demo encrypted channel).</span>';
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      contactForm.reset();
+      setTimeout(() => {
+        feedbackDiv.innerHTML = '';
+      }, 3200);
+    }, 1200);
+  });
+
+  // small console greeting
+  console.log("%c🛡️ Aymane Chaouqi | Pentesting & SOC Portfolio ready. Let's secure.", "color:#29b6f6; font-weight:bold;");
+</script>
+</body>
+</html>
