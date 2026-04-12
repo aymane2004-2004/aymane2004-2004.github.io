@@ -17,12 +17,28 @@
       background: #0b0f17;
       color: #eef2ff;
       line-height: 1.6;
+      overflow-x: hidden;
     }
+
+    /* Custom scrollbar - Green */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #11161f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border-radius: 8px;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
+
+    /* Navigation with Green Theme */
     nav {
       display: flex;
       justify-content: space-between;
@@ -30,18 +46,19 @@
       padding: 1.2rem 0;
       flex-wrap: wrap;
       gap: 1rem;
-      border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+      animation: slideDown 0.6s ease-out;
     }
     .logo {
       font-size: 1.6rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #00bcd4, #2979ff);
+      background: linear-gradient(135deg, #10b981, #059669);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
     .logo i {
-      color: #29b6f6;
+      color: #10b981;
       margin-right: 6px;
     }
     .nav-links {
@@ -53,13 +70,29 @@
       text-decoration: none;
       color: #b9c7d9;
       font-weight: 500;
-      transition: 0.2s;
+      transition: 0.3s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #10b981;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
     }
     .nav-links a:hover {
-      color: #29b6f6;
+      color: #10b981;
     }
+
     .demo-header {
       padding: 2rem 0 1rem;
+      animation: fadeInUp 0.8s ease-out;
     }
     .breadcrumb {
       color: #6c86a8;
@@ -67,20 +100,36 @@
       margin-bottom: 1rem;
     }
     .breadcrumb a {
-      color: #29b6f6;
+      color: #10b981;
       text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover {
+      color: #34d399;
     }
     h1 {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      animation: glowText 2s ease-in-out infinite;
     }
+    .demo-header p {
+      color: #9aa9c1;
+    }
+
+    /* Video Section */
     .video-container {
       background: #0a0c10;
       border-radius: 1rem;
       overflow: hidden;
       margin: 2rem 0;
       border: 1px solid #1e2a3a;
+      transition: all 0.3s ease;
+      animation: fadeInScale 0.6s ease-out;
+    }
+    .video-container:hover {
+      border-color: #10b981;
+      box-shadow: 0 10px 25px -8px rgba(16, 185, 129, 0.15);
     }
     .video-placeholder {
       background: linear-gradient(135deg, #0f172a, #0a0c10);
@@ -95,7 +144,7 @@
     .play-btn {
       width: 80px;
       height: 80px;
-      background: #1e88e5;
+      background: #10b981;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -103,13 +152,17 @@
       font-size: 2rem;
       color: white;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       margin-bottom: 1rem;
+      animation: pulse 2s infinite;
     }
     .play-btn:hover {
-      background: #29b6f6;
-      transform: scale(1.05);
+      background: #059669;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
     }
+
+    /* Demo Grid */
     .demo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -121,24 +174,57 @@
       border-radius: 1rem;
       padding: 1.5rem;
       border: 1px solid #1e2a3a;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInScale 0.6s ease-out backwards;
+      animation-delay: calc(var(--card-i, 0) * 0.1s);
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+      transition: left 0.5s ease;
+    }
+    .demo-card:hover:before {
+      left: 100%;
+    }
+    .demo-card:hover {
+      transform: translateY(-5px);
+      border-color: #10b981;
+      box-shadow: 0 15px 25px -12px rgba(16, 185, 129, 0.2);
     }
     .demo-card h3 {
       font-size: 1.3rem;
       margin-bottom: 1rem;
-      color: #29b6f6;
+      color: #10b981;
     }
     .splunk-dashboard {
       background: #080c12;
       border-radius: 0.8rem;
       padding: 1rem;
       margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+    .splunk-dashboard:hover {
+      transform: scale(1.01);
+      border: 1px solid #10b981;
     }
     .alert-item {
       background: #1a2538;
       padding: 0.8rem;
       border-radius: 8px;
       margin: 0.5rem 0;
-      border-left: 3px solid #f97316;
+      border-left: 3px solid #10b981;
+      transition: all 0.2s ease;
+    }
+    .alert-item:hover {
+      transform: translateX(5px);
+      background: #1f2e42;
     }
     .code-block {
       background: #080c12;
@@ -148,26 +234,55 @@
       font-size: 0.8rem;
       overflow-x: auto;
       margin: 1rem 0;
+      transition: all 0.3s ease;
+    }
+    .code-block:hover {
+      border: 1px solid #10b981;
+      transform: scale(1.01);
+    }
+    .code-block pre {
+      margin: 0;
+      color: #8db3e2;
     }
     .metric {
       font-size: 2rem;
       font-weight: 800;
-      color: #29b6f6;
+      color: #10b981;
+      transition: all 0.3s ease;
+    }
+    .metric:hover {
+      text-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
     }
     .btn-back {
       display: inline-block;
-      background: #1e88e5;
+      background: #10b981;
       color: white;
       padding: 0.7rem 1.5rem;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
       margin: 1rem 0 2rem;
-      transition: 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-back:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-back:hover:before {
+      left: 100%;
     }
     .btn-back:hover {
-      background: #0b5e9e;
+      background: #059669;
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
     }
     footer {
       text-align: center;
@@ -175,18 +290,119 @@
       color: #6c7a91;
       font-size: 0.75rem;
       border-top: 1px solid #11161f;
+      animation: fadeInUp 0.6s ease-out;
     }
+
+    /* Architecture Card */
+    .architecture-card {
+      background: #0f172a;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid #1e2a3a;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.6s ease-out;
+    }
+    .architecture-card:hover {
+      border-color: #10b981;
+      transform: translateY(-3px);
+    }
+    .architecture-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #10b981;
+    }
+
+    /* Floating background decoration */
+    .bg-decoration {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.03;
+      font-size: 8rem;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes glowText {
+      0%, 100% {
+        text-shadow: 0 0 0px rgba(16, 185, 129, 0);
+      }
+      50% {
+        text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+      }
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1.2rem;
+      }
       .demo-grid {
         grid-template-columns: 1fr;
       }
       h1 {
         font-size: 1.8rem;
       }
+      .bg-decoration {
+        font-size: 4rem;
+        bottom: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
 <body>
+<div class="bg-decoration">
+  <i class="fas fa-shield-haltered"></i>
+</div>
 <div class="container">
   <nav>
     <div class="logo"><i class="fas fa-shield-haltered"></i> AYMANE.CHAOQUI</div>
@@ -225,13 +441,13 @@
   </div>
 
   <div class="demo-grid">
-    <div class="demo-card">
+    <div class="demo-card" style="--card-i:1">
       <h3><i class="fas fa-chart-line"></i> Splunk Dashboard Preview</h3>
       <p>Real-time security monitoring dashboard showing alerts from the lab environment.</p>
       <div class="splunk-dashboard">
         <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
           <span><i class="fas fa-chart-simple"></i> Events (last 24h): <strong class="metric">1,247</strong></span>
-          <span><i class="fas fa-exclamation-triangle"></i> Alerts: <strong style="color:#f97316;">8</strong></span>
+          <span><i class="fas fa-exclamation-triangle"></i> Alerts: <strong style="color:#10b981;">8</strong></span>
         </div>
         <div class="alert-item">
           <strong><i class="fas fa-skull"></i> HIGH:</strong> Multiple failed logins from 192.168.1.45
@@ -245,11 +461,11 @@
       </div>
     </div>
 
-    <div class="demo-card">
+    <div class="demo-card" style="--card-i:2">
       <h3><i class="fas fa-code"></i> Correlation Rule Example</h3>
       <p>Splunk query for detecting brute-force attacks:</p>
       <div class="code-block">
-        <pre style="margin:0; color:#8db3e2;">
+        <pre style="margin:0;">
 index=windows sourcetype=WinEventLog:Security EventCode=4625
 | stats count by src_ip, user
 | where count > 10
@@ -259,22 +475,22 @@ index=windows sourcetype=WinEventLog:Security EventCode=4625
       </div>
     </div>
 
-    <div class="demo-card">
+    <div class="demo-card" style="--card-i:3">
       <h3><i class="fas fa-flask"></i> Attack Simulation Results</h3>
       <p>Tested attack vectors and detection rates:</p>
       <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
-        <li>✅ Brute-force SSH: <strong>Detected in 3 seconds</strong></li>
-        <li>✅ Mimikatz execution: <strong>Alert triggered</strong></li>
-        <li>✅ Reverse shell: <strong>Correlation rule matched</strong></li>
-        <li>✅ Port scanning: <strong>Threshold exceeded</strong></li>
+        <li>✅ Brute-force SSH: <strong style="color:#10b981;">Detected in 3 seconds</strong></li>
+        <li>✅ Mimikatz execution: <strong style="color:#10b981;">Alert triggered</strong></li>
+        <li>✅ Reverse shell: <strong style="color:#10b981;">Correlation rule matched</strong></li>
+        <li>✅ Port scanning: <strong style="color:#10b981;">Threshold exceeded</strong></li>
       </ul>
     </div>
 
-    <div class="demo-card">
+    <div class="demo-card" style="--card-i:4">
       <h3><i class="fas fa-download"></i> Lab Resources</h3>
       <p>Download configuration files and Splunk dashboards:</p>
       <div style="margin-top: 1rem;">
-        <p><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="#" style="color:#29b6f6;">/soc-stack-lab</a></p>
+        <p><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="#" style="color:#10b981;">/soc-stack-lab</a></p>
         <p><i class="fas fa-file-export"></i> <strong>Dashboard XML:</strong> Export ready</p>
         <p><i class="fas fa-terminal"></i> <strong>Universal Forwarder configs</strong></p>
       </div>
@@ -282,12 +498,12 @@ index=windows sourcetype=WinEventLog:Security EventCode=4625
   </div>
 
   <!-- Architecture Section -->
-  <div class="demo-card" style="margin-bottom: 2rem;">
+  <div class="architecture-card">
     <h3><i class="fas fa-network-wired"></i> Lab Architecture</h3>
     <div class="code-block">
       <pre style="margin:0;">
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│   Kali Linux │────▶│  Splunk      │◀────│  Windows 10  │
+│   Kali Linux │───▶│  Splunk      |◀───│  Windows 10  │
 │  (Attacker)  │     │  Enterprise  │     │  (Endpoint)  │
 └──────────────┘     │  + ES & UF   │     └──────────────┘
                      └──────────────┘
@@ -295,7 +511,7 @@ index=windows sourcetype=WinEventLog:Security EventCode=4625
                             │
                      ┌──────┴──────┐
                      │   Ubuntu    │
-                     │  (Web Server)│
+                     │ (Web Server)│
                      └─────────────┘
       </pre>
     </div>
@@ -304,6 +520,10 @@ index=windows sourcetype=WinEventLog:Security EventCode=4625
 
   <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
 </div>
+
+<footer>
+  <p>© 2025 Aymane Chaouqi — SOC Lab Demo. All attacks performed in isolated environment.</p>
+</footer>
 
 <script>
   // Video placeholder click handler
@@ -315,17 +535,39 @@ index=windows sourcetype=WinEventLog:Security EventCode=4625
     playBtn.addEventListener('click', function() {
       placeholder.style.display = 'none';
       videoPlayer.style.display = 'block';
-      // You can replace with actual video embed URL
+      // Replace with your actual video embed URL
       const iframe = videoPlayer.querySelector('iframe');
       if (iframe && iframe.src.includes('placeholder')) {
         iframe.src = "https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1";
       }
     });
   }
-</script>
 
-<footer>
-  <p>© 2025 Aymane Chaouqi — SOC Lab Demo. All attacks performed in isolated environment.</p>
-</footer>
+  // Add intersection observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all cards for fade-in effect
+  document.querySelectorAll('.demo-card, .architecture-card, .video-container').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Console greeting
+  console.log("%c🛡️ SOC Stack Live Demo | Green Theme Animated", "color:#10b981; font-weight:bold;");
+</script>
 </body>
 </html>
