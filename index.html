@@ -330,6 +330,7 @@
       flex-wrap: wrap;
       gap: 2.5rem;
       justify-content: space-between;
+      margin-bottom: 2rem;
     }
     .contact-info {
       flex: 1;
@@ -341,6 +342,14 @@
       gap: 12px;
       color: #cbd5e6;
       font-size: 0.9rem;
+    }
+    .contact-info a {
+      color: #cbd5e6;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .contact-info a:hover {
+      color: #29b6f6;
     }
     .contact-form {
       flex: 1;
@@ -372,6 +381,8 @@
       padding: 2rem;
       color: #6c7a91;
       font-size: 0.75rem;
+      border-top: 1px solid #11161f;
+      margin-top: 2rem;
     }
 
     @media (max-width: 780px) {
@@ -410,7 +421,7 @@
         <h1>Aymane <span>Chaouqi</span><br>Cybersecurity Engineer Student</h1>
         <p>Specialized in pentesting, Active Directory attacks, and Blue Team operations. Passionate about threat detection, SIEM (Splunk), and vulnerability assessment.</p>
         <div class="btn-group">
-          <a href="./Aymane-Chaouqi-CV.pdf" class="btn btn-primary"><i class="fas fa-envelope"></i>Download CV</a>
+          <a href="./Aymane-Chaouqi-CV.pdf" class="btn btn-primary"><i class="fas fa-download"></i> Download CV</a>
           <a href="#projects" class="btn btn-outline"><i class="fas fa-terminal"></i> Explore labs</a>
         </div>
       </div>
@@ -447,21 +458,27 @@
         <div class="project-icon"><i class="fas fa-server"></i></div>
         <h3>Active Directory Pentest Lab</h3>
         <p>Vulnerable AD environment setup with Windows Server & Kali. Performed Kerberoasting, Pass-the-Hash, privilege escalation & comprehensive vulnerability assessment.</p>
-        <div class="project-tags"><span>AD</span><span>Kerberoasting</span><span>Mimikatz</span></div>
+        <div class="project-tags"><span><i class="fas fa-shield"></i> AD</span><span><i class="fas fa-key"></i> Kerberoasting</span><span><i class="fas fa-skull"></i> Mimikatz</span></div>
         <a href="./case_study.html" class="card-link">Case study <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="project-card">
         <div class="project-icon"><i class="fab fa-whatsapp"></i></div>
         <h3>WhatsApp Suspicious Analyzer (C++)</h3>
         <p>Offline chat forensic tool that scans for keywords (bomb, drug, etc.), malicious links, and suspicious media files. Generates detailed threat reports.</p>
-        <div class="project-tags"><span>C++</span><span>Threat Detection</span><span>Forensics</span></div>
+        <div class="project-tags"><span><i class="fab fa-cuttlefish"></i> C++</span><span><i class="fas fa-bell"></i> Threat Detection</span><span><i class="fas fa-search"></i> Forensics</span></div>
         <a href="#" class="card-link">GitHub <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="project-card">
-        <div class="project-icon"><i class="fas fa-chart-simple"></i></div>
+        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
         <h3>Home Lab SOC Stack (Splunk + Kali)</h3>
         <p>Deployed Splunk SIEM, ingested logs from Linux & Windows endpoints, created correlation rules & real-time alerting for attack simulation (brute-force, malware).</p>
-        <div class="project-tags"><span>Splunk</span><span>Security Monitoring</span><span>EDR</span></div>
+        <div class="project-tags">
+          <span><i class="fab fa-splunk"></i> Splunk</span>
+          <span><i class="fas fa-chart-simple"></i> Security Monitoring</span>
+          <span><i class="fas fa-shield-virus"></i> EDR</span>
+          <span><i class="fas fa-chart-line"></i> SIEM</span>
+          <span><i class="fas fa-bell"></i> Real-time Alerts</span>
+        </div>
         <a href="./live_demo.html" class="card-link">Live demo <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
@@ -472,65 +489,65 @@
     <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience & Education</h2>
     <div class="timeline">
       <div class="timeline-item">
-        <h3>Cybersecurity Intern – Threat Detection & Analysis</h3>
+        <h3><i class="fas fa-briefcase"></i> Cybersecurity Intern – Threat Detection & Analysis</h3>
         <div class="timeline-date"><i class="far fa-calendar-alt"></i> Akelik, Casablanca | 2024</div>
         <p>Developed an offline WhatsApp analyzer (C++) to detect suspicious content (text keywords, links, videos/audios). Implemented threat detection logic and reporting.</p>
       </div>
       <div class="timeline-item">
-        <h3>Engineering Degree in Computer Science (Cybersecurity Specialization)</h3>
-        <div class="timeline-date"><i class="fas fa-graduation-cap"></i> Académie Internationale Mohammed VI de l’Aviation Civile | 2024 – present</div>
+        <h3><i class="fas fa-graduation-cap"></i> Engineering Degree in Computer Science (Cybersecurity Specialization)</h3>
+        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Académie Internationale Mohammed VI de l'Aviation Civile | 2024 – present</div>
         <p>Focus on offensive security, SOC operations, network security, and advanced penetration testing.</p>
       </div>
       <div class="timeline-item">
-        <h3>Preparatory Classes – Maths-Physics (MP)</h3>
-        <div class="timeline-date"><i class="fas fa-chalkboard"></i> Centre Reda Slaoui | 2022 – 2023</div>
+        <h3><i class="fas fa-chalkboard"></i> Preparatory Classes – Maths-Physics (MP)</h3>
+        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Centre Reda Slaoui | 2022 – 2023</div>
         <p>Intensive mathematics & physics foundation, analytical problem-solving.</p>
       </div>
       <div class="timeline-item">
-        <h3>Certifications & Languages</h3>
-        <div class="timeline-date"><i class="fas fa-certificate"></i> English (Fluent), French (Fluent), Arabic (Native) · Ongoing OSCP prep</div>
+        <h3><i class="fas fa-certificate"></i> Certifications & Languages</h3>
+        <div class="timeline-date"><i class="fas fa-language"></i> English (Fluent), French (Fluent), Arabic (Native) · <i class="fas fa-shield"></i> Ongoing OSCP prep</div>
         <p>Active Directory Attacks · SIEM Fundamentals · Python for Pentesters.</p>
       </div>
     </div>
   </section>
 
-<!-- Contact Section -->
-<!-- Updated Contact Form for Formspree -->
-<div class="contact-form">
-  <form action="https://formspree.io/f/mkokwqoe" method="POST">
-    <input type="hidden" name="_subject" value="New message from Portfolio">
-    
-    <!-- REMOVE this line: <input type="hidden" name="_replyto" value="%email"> -->
-    
-    <div class="input-group">
-      <input type="text" name="name" placeholder="Full name" required>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title"><i class="fas fa-paper-plane"></i> Contact & PGP</h2>
+    <div class="contact-flex">
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:chaouqi.aymane23@gmail.com">chaouqi.aymane23@gmail.com</a></p>
+        <p><i class="fab fa-github"></i> <a href="#">github.com/aymane-chaouqi</a></p>
+        <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/aymane-chaouqi</a></p>
+        <p><i class="fas fa-phone-alt"></i> +212 708 311 489</p>
+        <div style="margin-top: 1.5rem; background: #0f172a; padding: 1rem; border-radius: 1rem;">
+          <i class="fas fa-lock"></i> <strong>PGP/GPG available</strong><br>
+          <span style="font-size: 0.75rem;">Encrypted communication preferred for sensitive inquiries.</span>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/mkokwqoe" method="POST">
+          <input type="hidden" name="_subject" value="New message from Portfolio">
+          
+          <div class="input-group">
+            <input type="text" name="name" placeholder="Full name" required>
+          </div>
+          <div class="input-group">
+            <input type="email" name="email" placeholder="Email address" required>
+          </div>
+          <div class="input-group">
+            <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%">
+            <i class="fas fa-paper-plane"></i> Send message
+          </button>
+          <div id="formFeedback" style="margin-top: 1rem; text-align: center;"></div>
+        </form>
+      </div>
     </div>
-    <div class="input-group">
-      <input type="email" name="email" placeholder="Email address" required>
-    </div>
-    <div class="input-group">
-      <textarea name="message" rows="4" placeholder="Your message" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" style="width:100%">
-      <i class="fas fa-paper-plane"></i> Send message
-    </button>
-    <div id="formFeedback" style="margin-top: 1rem; text-align: center;"></div>
-  </form>
+  </section>
 </div>
 
-<script>
-  // Handle form submission feedback
-  const form = document.querySelector('form[action*="formspree"]');
-  const feedback = document.getElementById('formFeedback');
-  
-  if(form) {
-    form.addEventListener('submit', function(e) {
-      feedback.innerHTML = '<span style="color:#29b6f6;"><i class="fas fa-spinner fa-pulse"></i> Sending...</span>';
-      // Formspree handles the actual submit
-    });
-  }
-</script>
-</div>
 <footer>
   <p>© 2025 Aymane Chaouqi — Offensive & Defensive Security. All labs and tools are for ethical purposes.</p>
 </footer>
@@ -574,42 +591,19 @@
     });
   });
 
-  // Contact form handler
-  const contactForm = document.getElementById('contactForm');
-  const feedbackDiv = document.getElementById('formFeedback');
-
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!name || !email || !message) {
-      feedbackDiv.innerHTML = '<span style="color:#f97316;"><i class="fas fa-exclamation-triangle"></i> All fields required.</span>';
-      setTimeout(() => feedbackDiv.innerHTML = '', 2500);
-      return;
-    }
-    if (!email.includes('@')) {
-      feedbackDiv.innerHTML = '<span style="color:#f97316;">Valid email needed.</span>';
-      setTimeout(() => feedbackDiv.innerHTML = '', 2500);
-      return;
-    }
-
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending securely...';
-    submitBtn.disabled = true;
-
-    setTimeout(() => {
-      feedbackDiv.innerHTML = '<span style="color:#34d399;"><i class="fas fa-check-circle"></i> Message delivered (demo encrypted channel).</span>';
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      contactForm.reset();
+  // Formspree feedback handling
+  const form = document.querySelector('form[action*="formspree"]');
+  const feedback = document.getElementById('formFeedback');
+  
+  if(form) {
+    form.addEventListener('submit', function(e) {
+      feedback.innerHTML = '<span style="color:#29b6f6;"><i class="fas fa-spinner fa-pulse"></i> Sending...</span>';
+      // Formspree handles the actual submit - this just shows feedback
       setTimeout(() => {
-        feedbackDiv.innerHTML = '';
-      }, 3200);
-    }, 1200);
-  });
+        // This runs if there's no redirect (will be replaced by actual Formspree redirect)
+      }, 100);
+    });
+  }
 
   // small console greeting
   console.log("%c🛡️ Aymane Chaouqi | Pentesting & SOC Portfolio ready. Let's secure.", "color:#29b6f6; font-weight:bold;");
