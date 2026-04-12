@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOC Stack Live Demo | Aymane Chaouqi - Splunk SIEM Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0f17;
+      color: #eef2ff;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00bcd4, #2979ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo i {
+      color: #29b6f6;
+      margin-right: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #b9c7d9;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #29b6f6;
+    }
+    .demo-header {
+      padding: 2rem 0 1rem;
+    }
+    .breadcrumb {
+      color: #6c86a8;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .breadcrumb a {
+      color: #29b6f6;
+      text-decoration: none;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .video-container {
+      background: #0a0c10;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin: 2rem 0;
+      border: 1px solid #1e2a3a;
+    }
+    .video-placeholder {
+      background: linear-gradient(135deg, #0f172a, #0a0c10);
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem;
+    }
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      background: #1e88e5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 1rem;
+    }
+    .play-btn:hover {
+      background: #29b6f6;
+      transform: scale(1.05);
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+    .demo-card {
+      background: #0f172a;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid #1e2a3a;
+    }
+    .demo-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #29b6f6;
+    }
+    .splunk-dashboard {
+      background: #080c12;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .alert-item {
+      background: #1a2538;
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin: 0.5rem 0;
+      border-left: 3px solid #f97316;
+    }
+    .code-block {
+      background: #080c12;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .metric {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #29b6f6;
+    }
+    .btn-back {
+      display: inline-block;
+      background: #1e88e5;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 1rem 0 2rem;
+      transition: 0.2s;
+    }
+    .btn-back:hover {
+      background: #0b5e9e;
+      transform: translateY(-2px);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #6c7a91;
+      font-size: 0.75rem;
+      border-top: 1px solid #11161f;
+    }
+    @media (max-width: 768px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <div class="logo"><i class="fas fa-shield-haltered"></i> AYMANE.CHAOQUI</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="demo-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / SOC Stack Live Demo
+    </div>
+    <h1>📊 SOC Stack Live Demo: Splunk SIEM + Kali Attack Simulation</h1>
+    <p>Watch a real-time demonstration of security monitoring, log analysis, and threat detection using Splunk Enterprise Security.</p>
+  </div>
+
+  <!-- Video Section -->
+  <div class="video-container">
+    <div class="video-placeholder" id="videoPlaceholder">
+      <div class="play-btn" id="playBtn">
+        <i class="fas fa-play"></i>
+      </div>
+      <h3 style="margin: 1rem 0;">Live Demo: Splunk SIEM in Action</h3>
+      <p style="color: #8f9bb3;">Watch the full walkthrough of setting up SOC stack, ingesting logs, and detecting real attacks</p>
+      <div style="margin-top: 1rem; font-size: 0.8rem; color: #6c86a8;">
+        <i class="fas fa-clock"></i> Duration: 12 minutes
+      </div>
+    </div>
+    <div id="videoPlayer" style="display: none;">
+      <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" 
+              title="SOC Lab Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen style="width:100%; min-height:450px;"></iframe>
+    </div>
+  </div>
+
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3><i class="fas fa-chart-line"></i> Splunk Dashboard Preview</h3>
+      <p>Real-time security monitoring dashboard showing alerts from the lab environment.</p>
+      <div class="splunk-dashboard">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+          <span><i class="fas fa-chart-simple"></i> Events (last 24h): <strong class="metric">1,247</strong></span>
+          <span><i class="fas fa-exclamation-triangle"></i> Alerts: <strong style="color:#f97316;">8</strong></span>
+        </div>
+        <div class="alert-item">
+          <strong><i class="fas fa-skull"></i> HIGH:</strong> Multiple failed logins from 192.168.1.45
+        </div>
+        <div class="alert-item">
+          <strong><i class="fas fa-database"></i> MEDIUM:</strong> Suspicious PowerShell execution
+        </div>
+        <div class="alert-item">
+          <strong><i class="fas fa-shield"></i> LOW:</strong> Unusual outbound traffic detected
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <h3><i class="fas fa-code"></i> Correlation Rule Example</h3>
+      <p>Splunk query for detecting brute-force attacks:</p>
+      <div class="code-block">
+        <pre style="margin:0; color:#8db3e2;">
+index=windows sourcetype=WinEventLog:Security EventCode=4625
+| stats count by src_ip, user
+| where count > 10
+| eval severity="HIGH"
+| table _time, src_ip, user, count
+        </pre>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <h3><i class="fas fa-flask"></i> Attack Simulation Results</h3>
+      <p>Tested attack vectors and detection rates:</p>
+      <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+        <li>✅ Brute-force SSH: <strong>Detected in 3 seconds</strong></li>
+        <li>✅ Mimikatz execution: <strong>Alert triggered</strong></li>
+        <li>✅ Reverse shell: <strong>Correlation rule matched</strong></li>
+        <li>✅ Port scanning: <strong>Threshold exceeded</strong></li>
+      </ul>
+    </div>
+
+    <div class="demo-card">
+      <h3><i class="fas fa-download"></i> Lab Resources</h3>
+      <p>Download configuration files and Splunk dashboards:</p>
+      <div style="margin-top: 1rem;">
+        <p><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="#" style="color:#29b6f6;">/soc-stack-lab</a></p>
+        <p><i class="fas fa-file-export"></i> <strong>Dashboard XML:</strong> Export ready</p>
+        <p><i class="fas fa-terminal"></i> <strong>Universal Forwarder configs</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Architecture Section -->
+  <div class="demo-card" style="margin-bottom: 2rem;">
+    <h3><i class="fas fa-network-wired"></i> Lab Architecture</h3>
+    <div class="code-block">
+      <pre style="margin:0;">
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│   Kali Linux │────▶│  Splunk      │◀────│  Windows 10  │
+│  (Attacker)  │     │  Enterprise  │     │  (Endpoint)  │
+└──────────────┘     │  + ES & UF   │     └──────────────┘
+                     └──────────────┘
+                            ▲
+                            │
+                     ┌──────┴──────┐
+                     │   Ubuntu    │
+                     │  (Web Server)│
+                     └─────────────┘
+      </pre>
+    </div>
+    <p style="margin-top: 1rem;">All logs are forwarded to Splunk via Universal Forwarders, with correlation rules and real-time alerting configured.</p>
+  </div>
+
+  <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+</div>
+
+<script>
+  // Video placeholder click handler
+  const playBtn = document.getElementById('playBtn');
+  const placeholder = document.getElementById('videoPlaceholder');
+  const videoPlayer = document.getElementById('videoPlayer');
+  
+  if (playBtn) {
+    playBtn.addEventListener('click', function() {
+      placeholder.style.display = 'none';
+      videoPlayer.style.display = 'block';
+      // You can replace with actual video embed URL
+      const iframe = videoPlayer.querySelector('iframe');
+      if (iframe && iframe.src.includes('placeholder')) {
+        iframe.src = "https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1";
+      }
+    });
+  }
+</script>
+
+<footer>
+  <p>© 2025 Aymane Chaouqi — SOC Lab Demo. All attacks performed in isolated environment.</p>
+</footer>
+</body>
+</html>
