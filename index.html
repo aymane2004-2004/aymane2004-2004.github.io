@@ -133,6 +133,29 @@
       display: inline-block;
       animation: glow 2s ease-in-out infinite;
     }
+    
+    /* Animated Text Styles */
+    .animated-text-wrapper {
+      margin: 1rem 0 1rem 0;
+      min-height: 3rem;
+    }
+    .animated-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #10b981;
+      display: inline-block;
+    }
+    .typed-cursor {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #10b981;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
     .hero p {
       color: #9aa9c1;
       font-size: 1rem;
@@ -581,6 +604,9 @@
         bottom: 10px;
         right: 10px;
       }
+      .animated-text {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -608,6 +634,13 @@
       <div class="hero-content">
         <div class="hero-badge"><i class="fas fa-bug"></i> Offensive Security & SOC Analyst</div>
         <h1>Aymane <span>Chaouqi</span><br>Cybersecurity Engineer Student</h1>
+        
+        <!-- Animated Text Section -->
+        <div class="animated-text-wrapper">
+          <span class="animated-text" id="animatedRole"></span>
+          <span class="typed-cursor" id="cursor">|</span>
+        </div>
+        
         <p>Specialized in pentesting, Active Directory attacks, and Blue Team operations. Passionate about threat detection, SIEM (Splunk), and vulnerability assessment.</p>
         <div class="btn-group">
           <a href="./Aymane-Chaouqi-CV.pdf" class="btn btn-primary"><i class="fas fa-download"></i> Download CV</a>
@@ -742,6 +775,60 @@
 </footer>
 
 <script>
+  // ========== ANIMATED TEXT (Typewriter Effect) ==========
+  const roles = [
+    "🔒 Penetration Tester",
+    "🛡️ SOC Analyst",
+    "🐍 Python Security Developer",
+    "🏴‍☠️ CTF Player",
+    "🔍 Threat Hunter",
+    "⚡ Red Team Enthusiast"
+  ];
+  
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const animatedTextElement = document.getElementById('animatedRole');
+  const cursorElement = document.getElementById('cursor');
+  
+  function typeEffect() {
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+      // Deleting characters
+      animatedTextElement.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      // Typing characters
+      animatedTextElement.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+    }
+    
+    // Check if typing is complete
+    if (!isDeleting && charIndex === currentRole.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 2500); // Pause before deleting
+      return;
+    }
+    
+    // Check if deletion is complete
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(typeEffect, 500);
+      return;
+    }
+    
+    // Speed control
+    let speed = isDeleting ? 50 : 100;
+    setTimeout(typeEffect, speed);
+  }
+  
+  // Start the animation when page loads
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeEffect, 500);
+  });
+
   // Active nav highlight on scroll
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
